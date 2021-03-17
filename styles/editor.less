@@ -1,24 +1,56 @@
+// *********************************************************************************************************************
+// EDITOR
+// *********************************************************************************************************************
+//
+// Editors are use for inputs. Mini editors are text inputs (fields) used in find/replace, settings, etc.
+//
+// *********************************************************************************************************************
 
-// Mini Editor
-// -------------------
-
-// Mini Editors are the "text inputs" used in find+replace or in the settings.
-
+atom-text-editor {
+    background-color                    : @input-background-color;
+    font-size                           : var(--editor-font-size);
+    line-height                         : var(--editor-line-height);
+    .line-number {
+        min-width                       : 8ch;
+        text-align                      : right;
+        }
+    }
 
 atom-text-editor[mini] {
-  padding-left: @component-padding/2;
-  color: @text-color;
-  border-radius: @component-border-radius;
-  background-color: @input-background-color;
+    background-color                    : @input-background-color;
+    border                              : none;
+    border-radius                       : @component-border-radius;
+    color                               : @text-color;
+    opacity                             : 1;
+    overflow                            : auto;
+    padding-left                        : @component-padding/2;
+    &.is-focused {
+        background-color                : lighten(@input-background-color, 7%);
+        }
+    .placeholder-text {
+        color                           : @text-color-subtle;
+        font-size                       : smaller;
+        font-style                      : italic;
+        }
+    .selection .region {
+        background-color                : @background-color-info;
+        }
+    }
 
-  &.is-focused {
-    background-color: darken(@input-background-color, 5%);
-  }
-
-  .placeholder-text {
-    color: @text-color-subtle;
-  }
-  .selection .region {
-    background-color: @background-color-selected;
-  }
-}
+atom-text-editor.editor {
+    .gutter .line-number.folded {
+        color                           : inherit;
+        }
+    .fold-marker:after {
+        height                          : auto;
+        width                           : auto;
+        font                            : normal normal sans-serif;
+        background-color                : @fold-marker-background-color;
+        border-radius                   : 0.25em;
+        color                           : @fold-marker-foreground-color;
+        font-size                       : @fold-marker-font-size;
+        margin                          : 0 0.25em;
+        padding                         : 0 0.33em;
+        content                         : "∙∙∙";
+        }
+    }

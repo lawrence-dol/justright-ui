@@ -1,0 +1,38 @@
+// *********************************************************************************************************************
+// NOTIFICATION POPUPS
+// *********************************************************************************************************************
+//
+// Higly targeted overrides to packages.
+//
+// *********************************************************************************************************************
+
+atom-notifications {
+    atom-notification {
+        border-radius                   : @component-border-radius * 2;
+        margin-bottom                   : 5px;
+
+        &.error.icon::before   { background-color: @background-color-error;   color: @text-color-error;   }
+        &.fatal.icon::before   { background-color: @background-color-error;   color: @text-color-error;   }
+        &.info.icon::before    { background-color: @background-color-info;    color: @text-color-info;    }
+        &.success.icon::before { background-color: @background-color-success; color: @text-color-success; }
+        &.warning.icon::before { background-color: @background-color-warning; color: @text-color-warning; }
+
+        &.error   { code, .code, .content { color: @text-color-error;   } }
+        &.fatal   { code, .code, .content { color: @text-color-error;   } }
+        &.info    { code, .code, .content { color: @text-color-info;    } }
+        &.success { code, .code, .content { color: @text-color-success; } }
+        &.warning { code, .code, .content { color: @text-color-warning; } }
+
+        &.error, &.fatal, &.info, &.success, &.warning {
+            .btn.close-all,
+            .btn.close-all:hover {
+                border-color                : @background-color-info;
+                background-color            : @background-color-info;
+                color                       : @text-color-info;
+                }
+            code, .code, .content {
+                background-color            : @inset-panel-background-color;
+                }
+            }
+        }
+    }

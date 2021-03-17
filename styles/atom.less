@@ -1,0 +1,75 @@
+// *********************************************************************************************************************
+// BASE STYLES
+// *********************************************************************************************************************
+//
+// Used for global styles or to override certain Atom core styles
+//
+// *********************************************************************************************************************
+
+body {
+    background-color                    : @background-color-app;
+    color                               : @text-color;
+    font-size                           : @font-size;
+    }
+
+// *********************************************************************************************************************
+
+atom-dock {
+    &.bottom {
+        .atom-dock-open {
+            border-top                  : 1px solid @border-color-app;
+            .item-views {
+                border-left             : 1px solid @border-color-app;
+                }
+            }
+        }
+    &.left {
+        .atom-dock-open {
+            .item-views {
+                border-right            : 1px solid @border-color-app;
+                }
+            }
+        }
+    .atom-dock-toggle-button {
+        .atom-dock-toggle-button-inner {
+            border-radius               : @tab-border-radius;
+            }
+        }
+    }
+
+atom-workspace {
+    background-color                    : @background-color-app;
+    border-left                         : none;
+    }
+
+// *********************************************************************************************************************
+
+::-webkit-scrollbar,
+.horizontal-scrollbar,
+.horizontal-scrollbar > div {
+    background                          : @background-color-scroll;
+    right                               : 7px !important;                                                               // some genius decided to make these element styles
+    height                              : 7px !important;                                                               // some genius decided to make these element styles
+    }
+
+::-webkit-scrollbar,
+.vertical-scrollbar,
+.vertical-scrollbar > div {
+    background                          : @background-color-scroll;
+    bottom                              : 7px !important;                                                               // some genius decided to make these element styles
+    width                               : 7px !important;                                                               // some genius decided to make these element styles
+    }
+
+::-webkit-scrollbar-corner,
+.scrollbar-corner {
+    background                          : @background-color-scroll;
+    height                              : 7px !important;                                                               // some genius decided to make these element styles
+    width                               : 7px !important;                                                               // some genius decided to make these element styles
+    }
+
+::-webkit-scrollbar-thumb {
+    background                          : @text-color-scroll;
+    background-clip                     : content-box;
+    border                              : none;
+    border-radius                       : 1em;
+    }

@@ -1,57 +1,86 @@
-
-// Tabs
-// -------------------
-
-// Displays selectable tabs above the editor.
+// *********************************************************************************************************************
+// TABS
+// *********************************************************************************************************************
+//
 // Overrides: atom/tabs
+//
+// *********************************************************************************************************************
 
 .tab-bar {
-  background-color: @tab-bar-background-color;
-  border-bottom: 1px solid @base-border-color;
+    background-color                    : @tab-bar-background-color;
+    border-bottom                       : 1px solid @border-color-app;
+    border-radius                       : 0;
 
-  .tab {
-    color: @text-color;
-    height: @tab-height;
-    line-height: @tab-height;
-    font-size: @font-size;
-    border-right: 1px solid @tab-border-color;
-    background-color: @tab-background-color;
-    &.active {
-      color: @text-color-selected;
-      background-color: @tab-background-color-active;
+    .tab {
+        background-color                : @tab-background-color;
+        border                          : 1px solid @tab-border-color;
+        border-bottom                   : none;
+        border-top-left-radius          : @tab-border-radius;
+        border-top-right-radius         : @tab-border-radius;
+        color                           : @text-color;
+        font-size                       : @font-size;
+        height                          : @tab-height;
+        line-height                     : @tab-height;
+        max-width                       : 275px;
+        text-align                      : center;
+        width                           : auto;
+        &.active,
+        &.active .title {
+            color                       : @text-color-highlight;
+            background-color            : @tab-background-color-active;
+            }
+        &.is-dragging {
+            background                  : darken(@tab-background-color, 10%);
+            border-color                : transparent;
+            opacity                     : .5;
+            & .close-icon {
+                visibility              : hidden;
+                }
+            }
+        &.modified {
+            color                       : @text-color;
+            }
+        &.modified .close-icon {
+            background-color            : @background-color-warning;
+            color                       : @text-color-warning;
+            }
+        .close-icon {
+            color                       : @text-color;
+            }
+        .close-icon,
+        &.modified:NOT(:hover) .close-icon {
+            right                       : 6px;
+            top                         : 50%;
+            border                      : none;
+            border-radius               : .25em;
+            transform                   : translateY(-50%);
+            line-height                 : 1;
+            padding                     : 1px 2px;
+            width                       : auto;
+            height                      : auto;
+            }
+        .close-icon::before,
+        &.modified:hover .close-icon::before,
+        &.modified:NOT(:hover) .close-icon::before {
+            content                     : "\F081";
+            display                     : inline-block;
+            font-family                 : 'Octicons Regular';
+            font-size                   : 10px;
+            font-style                  : normal;
+            font-weight                 : normal;
+            height                      : 12px;
+            line-height                 : 1;
+            text-decoration             : none;
+            width                       : 12px;
+            }
+        .close-icon:hover,
+        &.modified:hover  .close-icon {
+            background-color            : @background-color-error;
+            color                       : @text-color-warning;
+            }
+        }
+
+    .tab + .tab {
+        margin-left                     : 2px;
+        }
     }
-
-
-    // Modified Icon (the circle) -------------------
-    &.modified:not(:hover) .close-icon {
-      top: 50%;
-      right: @component-padding + 4px; // 4px -> half of icon size
-      margin-top: -3px;
-      border-color: @text-color-info;
-    }
-    &.modified:hover .close-icon {
-      color: currentColor;
-    }
-
-
-    // Close Icon (the X) -------------------
-    .close-icon:hover {
-      color: @text-color-selected;
-    }
-    &.active .close-icon:hover {
-      color: @text-color;
-    }
-
-
-    // Dragging -------------------
-    // Styles get applied while dragging a tab
-    &.is-dragging {
-      background: darken(@tab-background-color, 10%);
-      border-color: transparent;
-      opacity: .5;
-      & .close-icon {
-        visibility: hidden;
-      }
-    }
-  }
-}

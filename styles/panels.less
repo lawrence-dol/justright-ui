@@ -1,27 +1,53 @@
-
-// Panels
-// -------------------
-
+// *********************************************************************************************************************
+// PANELS
+// *********************************************************************************************************************
+//
+// Modal panels are used on top of the editor, like the Command Palette.
+//
 // Overrides: atom/static/panels.less
+//
+// *********************************************************************************************************************
 
-.panel-heading {
-  border-bottom: 1px solid @panel-heading-border-color;
-  background-color: @panel-heading-background-color;
-}
+atom-pane {
+    border-left                         : none;
+    .item-views {
+        border-left                     : 1px solid @border-color-app;
+        }
+    .preview-pane .results-view {
+        .context-row,
+        .match-row,
+        .context-row.separator,
+        .match-row.separator {
+            box-shadow                  : none;
+            }
+        .list-nested-item .path-row {
+            border                      : 1px solid @border-color-app;
+            border-left                 : none;
+            }
+        .list-nested-item:NOT(.selected) .path-row {
+            background                  : lighten(@background-color-app, 3%);
+            }
+        }
+    }
 
-.inset-panel {
-  background-color: @inset-panel-background-color;
-  .panel-heading {
-    background-color: lighten(@inset-panel-background-color, 4%);
-  }
-}
-
-
-// Modal -------------------
-// Used on top of the editor, like the Command Palette.
+atom-panel {
+    border-left                         : 1px solid @border-color-app;
+    &.panel-bottom {
+        border-top                      : 1px solid @panel-heading-border-color;
+        }
+    .panel-heading {
+        border-bottom                   : 1px solid @panel-heading-border-color;
+        background-color                : @panel-heading-background-color;
+        }
+    .inset-panel {
+        background-color                : @inset-panel-background-color;
+        .panel-heading {
+            background-color            : lighten(@inset-panel-background-color, 4%);
+            }
+        }
+    }
 
 atom-panel.modal {
-  border: 1px solid @overlay-border-color;
-  border-top: none;
-  box-shadow: 0 2px 8px 1px hsla(0,0%,0%,.3);
-}
+    border                              : 1px solid @overlay-border-color;
+    box-shadow                          : 0 2px 8px 1px hsla(0,0%,0%,.3);
+    }

@@ -24,11 +24,6 @@
         max-width                       : 275px;
         text-align                      : center;
         width                           : auto;
-        &.active,
-        &.active .title {
-            color                       : @text-color-highlight;
-            background-color            : @tab-background-color-active;
-            }
         &.is-dragging {
             background                  : darken(@tab-background-color, 10%);
             border-color                : transparent;
@@ -82,5 +77,15 @@
 
     .tab + .tab {
         margin-left                     : 2px;
+        }
+    }
+
+atom-pane.active .tab-bar {
+    .tab {
+        &.active,
+        &.active .title {
+            color                       : @text-color-highlight;
+            background-color            : @tab-background-color-active;
+            }
         }
     }
